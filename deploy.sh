@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Set the Terraform variables
-export TF_VAR_project_id=$PROJECT_ID
-export TF_VAR_key_file=$KEY_FILE
+export TF_VAR_project_id=rick-devops-01
+export TF_VAR_key_file=rick-devops-01-keys.json
 export TF_VAR_region=us-central1
 export TF_VAR_run_region=us-east1
-export TF_VAR_model=$MODEL
+export TF_VAR_model=llama2-7b
 export TF_VAR_hf_api_token=$HF_API_TOKEN
 
 # Initialize Terraform
