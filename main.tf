@@ -194,7 +194,7 @@ variable "qdrant_port" {
 
 resource "google_cloud_run_service" "qdrant" {
   name     = "qdrant"
-  location = var.run_region
+  location = var.region
 
   template {
     spec {
@@ -216,7 +216,7 @@ resource "google_cloud_run_service" "qdrant" {
 
 resource "google_cloud_run_service" "ragstack-server" {
   name     = "ragstack-server"
-  location = var.run_region
+  location = var.region
 
   template {
     spec {

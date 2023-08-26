@@ -74,6 +74,6 @@ resource "null_resource" "install_gpu_driver" {
     EOT
   }
 
-  depends_on = [google_service_account_iam_binding.set_gsa_binding]
+  depends_on = [google_container_cluster.gpu_cluster]
 }
 
