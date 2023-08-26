@@ -61,3 +61,19 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     ]
   }
 }
+
+resource "null_resource" "install_gpu_driver" {
+  triggers = {
+    cluster_ep = google_container_cluster.gpu_cluster.endpoint #kubernetes cluster endpoint
+  }
+
+  provisioner "local-exec" {
+    command = <<EOT
+      gcloud container clusters get-credentials ${google_container_cluster.gpu_cluster.name} --region ${var.region} --project ${var.project_id}
+      kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/container-engine-accelerators/master/nvidia-driver-installer/cos/daemonset-preloaded.yaml
+    EOT
+  }
+
+  depends_on = [google_service_account_iam_binding.set_gsa_binding]
+}
+
