@@ -119,7 +119,8 @@ resource "kubernetes_deployment" "llama2_7b" {
       }
       spec {
         container {
-          image = "psychicapi/llama2-7b:latest"
+          /* image = "psychicapi/llama2-7b:latest" */
+          image = "us-central1-docker.pkg.dev/${var.project_id}/llm-repo/llama2-7b"
           name = "llama2-7b-container"
           env {
             name  = "TRUSS_SECRET_huggingface_api_token"
