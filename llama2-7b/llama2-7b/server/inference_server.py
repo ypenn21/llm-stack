@@ -1,17 +1,14 @@
 import os
-from typing import Dict
 
 import yaml
-from common.logging import setup_logging
-from common.truss_server import TrussServer  # noqa: E402
+from common.truss_server import TrussServer
+from model_wrapper import ModelWrapper
 
 CONFIG_FILE = "config.yaml"
 
-setup_logging()
-
 
 class ConfiguredTrussServer:
-    _config: Dict
+    _config: dict
     _port: int
 
     def __init__(self, config_path: str, port: int):
@@ -20,8 +17,9 @@ class ConfiguredTrussServer:
             self._config = yaml.safe_load(config_file)
 
     def start(self):
-        server = TrussServer(http_port=self._port, config=self._config)
-        server.start()
+        server = TrussServer(workers=1, http_port=self._port)
+        model = ModelWrapper(self._config)
+        server.start([model])
 
 
 if __name__ == "__main__":
