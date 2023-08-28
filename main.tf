@@ -275,6 +275,9 @@ resource "google_cloud_run_service" "web-client" {
           value = var.model == "falcon7b" ? "http://${kubernetes_service.falcon7b_service[0].status[0].load_balancer[0].ingress[0].ip}" : "http://${kubernetes_service.llama2_7b_service[0].status[0].load_balancer[0].ingress[0].ip}:8080"
 
         }
+        ports {
+          container_port = 7860
+        }
 
       }
     }
@@ -298,6 +301,13 @@ module "gke-cluster" {
 resource "google_cloud_run_service_iam_member" "public" {
   service  = google_cloud_run_service.qdrant.name
   location = google_cloud_run_service.qdrant.location
+  role     = "roles/run.invoker"
+  member   = "allUsers"
+}
+
+resource "google_cloud_run_service_iam_member" "web-public" {
+  service  = google_cloud_run_service.web-client.name
+  location = google_cloud_run_service.web-client.location
   role     = "roles/run.invoker"
   member   = "allUsers"
 }
