@@ -255,6 +255,38 @@ resource "google_cloud_run_service" "ragstack-server" {
   }
 }
 
+resource "google_cloud_run_service" "web-client" {
+  name     = "web-client"
+  location = var.region
+
+  template {
+    spec {
+      containers {
+        image = ""us-central1-docker.pkg.dev/${var.project_id}/llm-repo/web-client""
+
+        resources {
+          limits = {
+            memory = "2Gi"
+          }
+        }
+
+        env {
+          name = "LLM_URL"
+          value = var.model == "falcon7b" ? "http://${kubernetes_service.falcon7b_service[0].status[0].load_balancer[0].ingress[0].ip}" : "http://${kubernetes_service.llama2_7b_service[0].status[0].load_balancer[0].ingress[0].ip}:8080"
+
+        }
+
+      }
+    }
+  }
+
+  traffic {
+    percent         = 100
+    latest_revision = true
+  }
+}
+
+
 module "gke-cluster" {
   source       = "./gke-cluster"
 

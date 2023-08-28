@@ -1,11 +1,14 @@
 import gradio as gr
 import requests
+import os
+
 
 
 def predict(question):
     data = {"prompt": question}	
     print("Testing....")
-    res=requests.post("http://myservice.sm-llm-demo.internal/v1/models/model:predict", json=data)
+    llm_url = os.environ.get('LLM_URL')
+    res=requests.post(f"{llm_url}/v1/models/model:predict", json=data)
     print(res.json())
     return res.json()
 
