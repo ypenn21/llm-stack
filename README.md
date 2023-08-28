@@ -5,6 +5,7 @@ Meta access request: https://ai.meta.com/resources/models-and-libraries/llama-do
 Hugging face access: https://huggingface.co/meta-llama/Llama-2-7b
 
 Get Hugging face access token from HF settings
+
 Create a Artifact Registry repo: llm-repo in us-central1
 
 ## 1. Build the Llama 2 model serving containter image,
@@ -31,4 +32,9 @@ Then run the deploy.sh script to provision GKE clusters
 
 ```
 
+Validation:
+```
+
+curl --location 'http://SERVICE_IP:8080/v1/models/model:predict' --header 'Content-Type: application/json' --data '{  "prompt": "Who was president of the united states of america in 1890??"}'
+```
 ## 3. Test with web-app
