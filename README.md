@@ -46,3 +46,11 @@ curl --location 'http://SERVICE_IP:8080/v1/models/model:predict' --header 'Conte
 ```
 ## 3. Test with web-app
 Go to cloud run, and open the web-client run service URL, and test out prompts.
+
+## 4. Clean-up 
+
+To clean up resource, update the deploy.sh file:
+
+. comment out the cloud build lines in step 1 and step 2
+
+. Update the last line to destroy resources:  terraform destroy --auto-approve

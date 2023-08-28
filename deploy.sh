@@ -5,7 +5,7 @@
 cd llama2-7b
 gcloud builds submit --region us-central1 --config cloudbuild.yaml
 
-#1. Build frontend web-client container image:
+#2. Build frontend web-client container image:
 cd ../web-app
 gcloud builds submit --region us-central1 --config cloudbuild.yaml
 
