@@ -11,12 +11,11 @@ Create a Artifact Registry repo: llm-repo in us-central1
 Main GCP Services:
 
 GKE, Cloud Build, Cloud Run
-## 1. Build the Llama 2 model serving containter image,
+## 1. Update Llama 2 model serving config file with your own HF token API,
 
 ```
 cd llama2-7b/llama2-7b
 sed -i 's/API_TOKEN_HERE/XXXXXX/g' config.yaml
-gcloud builds submit --region=us-west2 --config cloudbuild.yaml
 
 ```
 
