@@ -262,7 +262,7 @@ resource "google_cloud_run_service" "web-client" {
   template {
     spec {
       containers {
-        image = ""us-central1-docker.pkg.dev/${var.project_id}/llm-repo/web-client""
+        image = "us-central1-docker.pkg.dev/${var.project_id}/llm-repo/web-client"
 
         resources {
           limits = {
