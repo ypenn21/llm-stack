@@ -17,8 +17,17 @@ gcloud builds submit --region=us-west2 --config cloudbuild.yaml
 
 ```
 
+## 2. Build the front-end web client containter image,
+
+```
+cd ../../web-app
+gcloud builds submit --region us-central1 --config cloudbuild.yaml
+
+```
+
 ## 2. Provision the GKE-GPU cluster, and llama 2 deployment/services
 Update deploy.sh file
+
 export TF_VAR_project_id=rick-devops-01
 export TF_VAR_key_file=rick-devops-01-keys.json
 export TF_VAR_region=us-central1
@@ -38,3 +47,4 @@ Validation:
 curl --location 'http://SERVICE_IP:8080/v1/models/model:predict' --header 'Content-Type: application/json' --data '{  "prompt": "Who was president of the united states of america in 1890??"}'
 ```
 ## 3. Test with web-app
+Go to cloud run, and open the web-client run service URL, and test out prompts.
