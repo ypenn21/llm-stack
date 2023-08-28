@@ -14,17 +14,9 @@ GKE, Cloud Build, Cloud Run
 ## 1. Update Llama 2 model serving config file with your own HF token API,
 
 ```
-cd llama2-7b/llama2-7b
+cd llama2-7b
 sed -i 's/API_TOKEN_HERE/XXXXXX/g' config.yaml
-
-```
-
-## 2. Build the front-end web client containter image,
-
-```
-cd ../../web-app
-gcloud builds submit --region us-central1 --config cloudbuild.yaml
-
+cd ..
 ```
 
 ## 2. Provision the GKE-GPU cluster, and llama 2 deployment/services
