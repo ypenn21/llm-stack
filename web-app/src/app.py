@@ -26,7 +26,7 @@ demo = gr.Interface(
     ],
     "text",
     examples=examples,
-    title= "My KnowledgeBot" +logo_html
+    title= "LLama 2 Knowledge Bot" +logo_html
     )
 
 demo.launch(server_name="0.0.0.0", server_port=7860)
