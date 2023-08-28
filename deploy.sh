@@ -3,10 +3,10 @@
 #1. Build llama 2 model container image:
 
 cd llama2-7b/llama2-7b
-gcloud build submit --region us-central1 --config cloudbuild.yaml
+gcloud builds submit --region us-central1 --config cloudbuild.yaml
 
 cd ../../web-app
-gcloud build submit --region us-central1 --config cloudbuild.yaml
+gcloud builds submit --region us-central1 --config cloudbuild.yaml
 
 # Set the Terraform variables
 
