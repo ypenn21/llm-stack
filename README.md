@@ -8,6 +8,9 @@ Get Hugging face access token from HF settings
 
 Create a Artifact Registry repo: llm-repo in us-central1
 
+Main GCP Services:
+
+GKE, Cloud Build, Cloud Run
 ## 1. Build the Llama 2 model serving containter image,
 
 ```
@@ -29,9 +32,13 @@ gcloud builds submit --region us-central1 --config cloudbuild.yaml
 Update deploy.sh file
 
 export TF_VAR_project_id=rick-devops-01
+
 export TF_VAR_key_file=rick-devops-01-keys.json
+
 export TF_VAR_region=us-central1
+
 export TF_VAR_model=llama2-7b
+
 export TF_VAR_hf_api_token=$HF_API_TOKEN
 
 Then run the deploy.sh script to provision GKE clusters 
