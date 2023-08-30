@@ -2,22 +2,22 @@
 
 #1. Build llama 2 model container image:
 
-cd llama2-7b
-gcloud builds submit --region us-central1 --config cloudbuild.yaml
+#cd llama2-7b
+#gcloud builds submit --region us-central1 --config cloudbuild.yaml
 
 #2. Build frontend web-client container image:
-cd ../web-app
-gcloud builds submit --region us-central1 --config cloudbuild.yaml
+#cd ../web-app
+#gcloud builds submit --region us-central1 --config cloudbuild.yaml
 
 # Set the Terraform variables
 
-cd ..
+#cd ..
 
-export TF_VAR_project_id=rick-devops-01
-export TF_VAR_key_file=rick-devops-01-keys.json
+export TF_VAR_project_id=epam-394023
+export TF_VAR_key_file=/home/admin_/git-projects/llm-stack/gke-key.json
 export TF_VAR_region=us-central1
 export TF_VAR_model=llama2-7b
-export TF_VAR_hf_api_token=$HF_API_TOKEN
+export TF_VAR_hf_api_token=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
 
 
 # Initialize Terraform
