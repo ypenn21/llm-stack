@@ -214,7 +214,7 @@ resource "google_cloud_run_service" "qdrant" {
     latest_revision = true
   }
 }
-
+/* 
 resource "google_cloud_run_service" "ragstack-server" {
   name     = "ragstack-server"
   location = var.region
@@ -254,7 +254,7 @@ resource "google_cloud_run_service" "ragstack-server" {
     latest_revision = true
   }
 }
-
+*/ 
 resource "google_cloud_run_service" "web-client" {
   name     = "web-client"
   location = var.region
