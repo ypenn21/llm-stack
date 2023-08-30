@@ -193,6 +193,7 @@ variable "qdrant_port" {
   default     = "443"
 }
 
+/*
 resource "google_cloud_run_service" "qdrant" {
   name     = "qdrant"
   location = var.region
@@ -254,6 +255,8 @@ resource "google_cloud_run_service" "ragstack-server" {
     latest_revision = true
   }
 }
+
+*/
 
 resource "google_cloud_run_service" "web-client" {
   name     = "web-client"
