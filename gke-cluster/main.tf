@@ -50,6 +50,9 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
         max_shared_clients_per_gpu = 8
       }
     }
+    workload_metadata_config {
+      node_metadata = "GKE_METADATA_SERVER" 
+    }
     machine_type = "n1-standard-4"
     disk_size_gb = 50
     spot = true
