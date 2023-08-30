@@ -17,7 +17,7 @@ export TF_VAR_project_id=epam-394023
 export TF_VAR_key_file=/home/admin_/git-projects/llm-stack/gke-key.json
 export TF_VAR_region=us-central1
 export TF_VAR_model=llama2-7b
-export TF_VAR_hf_api_token=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
+export TF_VAR_hf_api_token=token_id
 
 
 # Initialize Terraform
