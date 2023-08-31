@@ -24,12 +24,15 @@ items:
         labels:
           component: llama2-7b-layer
       spec:
+        serviceAccountName: test
         automountServiceAccountToken: true
+        nodeSelector:
+          iam.gke.io/gke-metadata-server-enabled: "true"
         containers:
         - env:
           - name: TRUSS_SECRET_huggingface_api_token
-            value: hf_uN
-          image: us-central1-docker.pkg.dev/epam-394023/llm-repo/llama2-7b
+            value: hf_u 
+          image: us-central1-docker.pkg.dev/epam-394023/llm-repo/llama2-7b:latest
           imagePullPolicy: Always
           name: llama2-7b-container
           ports:
