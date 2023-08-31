@@ -298,13 +298,14 @@ module "gke-cluster" {
   key_file   = var.key_file
 }
 
+/*
 resource "google_cloud_run_service_iam_member" "public" {
   service  = google_cloud_run_service.qdrant.name
   location = google_cloud_run_service.qdrant.location
   role     = "roles/run.invoker"
   member   = "allUsers"
 }
-
+*/
 resource "google_cloud_run_service_iam_member" "web-public" {
   service  = google_cloud_run_service.web-client.name
   location = google_cloud_run_service.web-client.location
